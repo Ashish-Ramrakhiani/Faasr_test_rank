@@ -27,7 +27,7 @@ The workflow consists of three main stages:
    ```
 
 2. **Configure Secrets**
-   Add the following secrets to your GitHub repository:
+   Add the following secrets to your faasr_env file:
    - `MY_GITHUB_ACCOUNT_TOKEN`: Your GitHub Personal Access Token
    - `MY_MINIO_BUCKET_ACCESS_KEY`: MinIO Access Key
    - `MY_MINIO_BUCKET_SECRET_KEY`: MinIO Secret Key
@@ -38,6 +38,9 @@ The workflow consists of three main stages:
    - `ActionRepoName`: Your repository name
    - `Bucket`: Your S3/MinIO bucket name
    - `Endpoint`: Your S3/MinIO endpoint
+     
+4. **Create folders in S3 bucket**
+   Create two folders namely "weather_raw" and "weather_report" in your S3 bucket
 
 ## File Descriptions
 
