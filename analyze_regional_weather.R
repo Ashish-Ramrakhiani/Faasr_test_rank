@@ -1,21 +1,17 @@
 analyze_regional_weather <- function(folder, region_prefix, stats_prefix,output_folder) {
-  # Analyze weather data for a specific region
   
   rank_list <- FaaSr::faasr_rank()
   rank_number <- rank_list$Rank
-  
-  # Get the regional data
+
   remote_file <- paste0(region_prefix, "_region_", rank_number, "_weather.csv")
   local_file <- paste0("region_", rank_number, "_weather.csv")
   
   faasr_get_file(remote_folder=folder, 
                  remote_file=remote_file, 
                  local_file=local_file)
-  
-  # Read and analyze the data
+
   weather_data <- read.csv(local_file)
   
-  # Calculate regional statistics
   regional_stats <- data.frame(
     region = rank_number,
     avg_temp = mean(weather_data$temperature),
@@ -28,11 +24,9 @@ analyze_regional_weather <- function(folder, region_prefix, stats_prefix,output_
                                  weather_data$precipitation > 50)
   )
   
-  # Save regional statistics
   local_stats_file <- paste0("stats_region_", rank_number, ".csv")
   write.csv(regional_stats, local_stats_file, row.names=FALSE)
   
-  # Upload to S3
   remote_stats_file <- paste0(stats_prefix, "_region_", rank_number, ".csv")
   faasr_put_file(local_file=local_stats_file,
                  remote_folder=output_folder,
