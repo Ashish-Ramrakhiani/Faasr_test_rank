@@ -19,9 +19,9 @@
             "FunctionName": "generate_weather_data",
             "FaaSServer": "My_GitHub_Account",
             "Arguments": {
-                "folder": "tutorial",
-                "region_prefix": "raw"
-              
+                "folder": "weather_raw",
+                "region_prefix": "raw",
+                "num_regions": "4"
             },
             "InvokeNext": "analyze(4)"
         },
@@ -29,7 +29,7 @@
             "FunctionName": "analyze_regional_weather",
             "FaaSServer": "My_GitHub_Account",
             "Arguments": {
-                "folder": "tutorial",
+                "folder": "weather_raw",
                 "region_prefix":"raw",
                 "stats_prefix":"stats"
             },
@@ -39,7 +39,7 @@
             "FunctionName": "compile_global_report",
             "FaaSServer": "My_GitHub_Account",
             "Arguments": {
-                "folder": "weather_data",
+                "folder": "weather_report",
                 "region_prefix": "raw",
                 "stats_prefix": "stats"
             }
@@ -47,13 +47,13 @@
     },
      "ActionContainers": {
         "start": "ghcr.io/faasr/github-actions-tidyverse:1.4.0",
-        "sum": "ghcr.io/faasr/github-actions-tidyverse:1.4.0",
-        "end": "ghcr.io/faasr/github-actions-tidyverse:1.4.0"
+        "analyze": "ghcr.io/faasr/github-actions-tidyverse:1.4.0",
+        "report": "ghcr.io/faasr/github-actions-tidyverse:1.4.0"
     },
     "FunctionGitRepo": {
-        "start": "Ashish-Ramrakhiani/Faasr_test_rank",
-        "analyze": "Ashish-Ramrakhiani/Faasr_test_rank",
-        "report": "Ashish-Ramrakhiani/Faasr_test_rank"
+        "generate_weather_data": "Ashish-Ramrakhiani/Faasr_test_rank",
+        "analyze_regional_weather":"Ashish-Ramrakhiani/Faasr_test_rank",
+        "compile_global_report": "Ashish-Ramrakhiani/Faasr_test_rank"
     },
     "FunctionInvoke": "start",
     "FaaSrLog": "FaaSrLog",
