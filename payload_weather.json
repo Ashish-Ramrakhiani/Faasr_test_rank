@@ -21,7 +21,7 @@
             "Arguments": {
                 "folder": "weather_raw",
                 "region_prefix": "raw",
-                "num_regions": "4"
+                "num_regions": 4
             },
             "InvokeNext": "analyze(4)"
         },
@@ -31,7 +31,8 @@
             "Arguments": {
                 "folder": "weather_raw",
                 "region_prefix":"raw",
-                "stats_prefix":"stats"
+                "stats_prefix":"stats",
+                "output_folder":"weather_report"
             },
             "InvokeNext": "report"
         },
@@ -56,7 +57,7 @@
         "compile_global_report": "Ashish-Ramrakhiani/Faasr_test_rank"
     },
     "FunctionInvoke": "start",
-    "FaaSrLog": "FaaSrLog",
+    "FaaSrLog": "FaaSrLogtest",
     "LoggingDataStore": "My_Minio_Bucket",
     "DefaultDataStore": "My_Minio_Bucket"
 }

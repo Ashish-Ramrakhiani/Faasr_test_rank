@@ -1,4 +1,4 @@
-analyze_regional_weather <- function(folder, region_prefix, stats_prefix) {
+analyze_regional_weather <- function(folder, region_prefix, stats_prefix,output_folder) {
   # Analyze weather data for a specific region
   
   rank_list <- FaaSr::faasr_rank()
@@ -35,7 +35,7 @@ analyze_regional_weather <- function(folder, region_prefix, stats_prefix) {
   # Upload to S3
   remote_stats_file <- paste0(stats_prefix, "_region_", rank_number, ".csv")
   faasr_put_file(local_file=local_stats_file,
-                 remote_folder=folder,
+                 remote_folder=output_folder,
                  remote_file=remote_stats_file)
   
   log_msg <- paste0("Analyzed weather data for region ", rank_number)
