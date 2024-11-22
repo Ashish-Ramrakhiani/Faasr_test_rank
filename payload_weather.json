@@ -41,7 +41,7 @@
             "FaaSServer": "My_GitHub_Account",
             "Arguments": {
                 "folder": "weather_report",
-                "region_prefix": "raw",
+                "expected_regions":4,
                 "stats_prefix": "stats"
             }
         }
